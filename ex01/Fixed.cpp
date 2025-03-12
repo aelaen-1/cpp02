@@ -27,13 +27,19 @@ Fixed& Fixed::operator=(const Fixed& other)
 
 int Fixed::getRawBits(void) const
 {
-    std::cout << "getRawBits member function called\n";
     return (_rawBits);
 }
 
 void Fixed::setRawBits(int const raw)
 {
     _rawBits = raw;
+}
+
+
+std::ostream& operator<<(std::ostream& os, const Fixed& other)
+{
+    os << other.toFloat();
+    return (os);
 }
 
 Fixed::Fixed(int const n)
@@ -48,18 +54,12 @@ Fixed::Fixed(float const f)
     _rawBits = roundf(f * (1 << _fracBitCount));
 }
 
-int Fixed::toInt() const
+float   Fixed::toFloat(void) const
 {
-    return _rawBits >> _fracBitCount;
+    return float(_rawBits) / float(1 << _fracBitCount); // conserve partie fractionnaire
 }
 
-float Fixed::toFloat() const
+int     Fixed::toInt(void) const
 {
-    return float(_rawBits) / float(1 << _fracBitCount);
-}
-
-std::ostream& operator<<(std::ostream& os, const Fixed& other)
-{
-    os << other.toFloat();
-    return (os);
+    return _rawBits >> _fracBitCount; // tronque la partie fractionnaire
 }
