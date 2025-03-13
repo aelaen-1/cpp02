@@ -11,8 +11,8 @@ Point::Point(const float float1, const float float2)
 }
 
 Point::Point(const Point& other)
-: x(other.x), y(other.y)
 {
+    *this = other;
 }
 
 Point::~Point()
