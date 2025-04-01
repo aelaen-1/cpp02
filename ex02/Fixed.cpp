@@ -2,7 +2,7 @@
 
 int const   Fixed::_fracBitCount = 8;
 
-Fixed::Fixed(void)
+Fixed::Fixed()
 : _rawBits(0)
 {
 }
@@ -11,7 +11,7 @@ Fixed::Fixed(const Fixed& other)
     *this = other;
 }
 
-Fixed::~Fixed(void)
+Fixed::~Fixed()
 {
 }
 
@@ -57,7 +57,6 @@ int     Fixed::toInt(void) const
 {
     return _rawBits >> _fracBitCount; // tronque la partie fractionnaire
 }
-
 
 /*            comparison operators overload           */
 bool    Fixed::operator>(const Fixed& other) const
@@ -110,7 +109,7 @@ Fixed Fixed::operator*(const Fixed& other) const
 Fixed Fixed::operator/(const Fixed& other) const
 {
     if (!other.getRawBits())
-        return (std::cout << "You cannot by zero.\n", 0);
+        return (std::cout << "You cannot divide by zero.\n", 0);
     return Fixed(this->toFloat() / other.toFloat());
 }
 

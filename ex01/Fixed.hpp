@@ -7,17 +7,17 @@
 class Fixed
 {
 public:
-    Fixed(void);
-    Fixed(const Fixed& other);
-    ~Fixed(void);
-    Fixed& operator=(const Fixed& other);
-    int getRawBits(void) const;
-    void    setRawBits(int const raw);
-
+    Fixed();
     Fixed(int const n);
     Fixed(float const f);
-    float   toFloat(void) const;
+    Fixed(const Fixed& other);
+    Fixed& operator=(const Fixed& other);
+    ~Fixed();
+
+    void    setRawBits(int const raw);
+    int     getRawBits(void) const;
     int     toInt(void) const;
+    float   toFloat(void) const;
 
 private:
     int _rawBits;

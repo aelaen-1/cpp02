@@ -6,7 +6,7 @@
 // A
 
 // (AB, AP) = ((B.x - A.x, B.y - A.y), (P.x - A.x, P.y - A.y))
-// ==> on considère la matrice M formée par la concaténation des matrices AB et _Apply
+// ==> on considère la matrice M formée par la concaténation des matrices AB et AP
 // et on calcule le déterminant : 
 // det(M) = ad - bc = (B.x - A.x)(P.y - A.y) - (B.y - A.y)(P.x - A.x)
 // M  = |a b|

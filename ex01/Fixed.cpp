@@ -2,27 +2,39 @@
 
 int const   Fixed::_fracBitCount = 8;
 
-Fixed::Fixed(void)
+Fixed::Fixed()
 : _rawBits(0)
 {
-    std::cout << "Default constructor called"<<std::endl;
+    std::cout << "Default constructor\n";
+}
+
+Fixed::Fixed(int const n)
+{
+    std::cout << "Integer constructor\n";
+    _rawBits = n << _fracBitCount;
+}
+
+Fixed::Fixed(float const f)
+{
+    std::cout << "Float constructor\n";
+    _rawBits = roundf(f * (1 << _fracBitCount));
 }
 Fixed::Fixed(const Fixed& other)
 {
-    std::cout << "Copy constructor called\n";
+    std::cout << "Copy constructor\n";
     *this = other;
 }
 
-Fixed::~Fixed(void)
+Fixed::~Fixed()
 {
-    std::cout << "Destructor called\n";
+    std::cout << "Default destructor\n";
 }
 
 Fixed& Fixed::operator=(const Fixed& other)
 {
-    std::cout << "Copy assignment operator called\n";
+    std::cout << "Copy assignment operator\n";
     _rawBits = other.getRawBits(); 
-    return (*this); // on retourne une réf, et this est un ptr
+    return (*this);
 }
 
 int Fixed::getRawBits(void) const
@@ -40,18 +52,6 @@ std::ostream& operator<<(std::ostream& os, const Fixed& other)
 {
     os << other.toFloat();
     return (os);
-}
-
-Fixed::Fixed(int const n)
-{
-    std::cout << "Int constructor called\n";
-    _rawBits = n << _fracBitCount;
-}
-
-Fixed::Fixed(float const f)
-{
-    std::cout << "Float constructor called\n";
-    _rawBits = roundf(f * (1 << _fracBitCount));
 }
 
 float   Fixed::toFloat(void) const

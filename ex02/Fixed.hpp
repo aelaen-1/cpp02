@@ -7,11 +7,11 @@
 class Fixed
 {
 public:
-    Fixed(void);
+    Fixed();
     Fixed(const Fixed& other);
     Fixed(int const n);
     Fixed(float const f);
-    ~Fixed(void);
+    ~Fixed();
 
     Fixed& operator=(const Fixed& other);
 

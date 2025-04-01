@@ -2,32 +2,32 @@
 
 int const   Fixed::_fracBitCount = 8;
 
-Fixed::Fixed(void)
+Fixed::Fixed()
 : _rawBits(0)
 {
-    std::cout << "Default constructor called"<<std::endl;
+    std::cout << "Default constructor\n";
 }
 Fixed::Fixed(const Fixed& other)
 {
-    std::cout << "Copy constructor called\n";
+    std::cout << "Copy constructor\n";
     *this = other;
 }
 
-Fixed::~Fixed(void)
+Fixed::~Fixed()
 {
-    std::cout << "Destructor called\n";
+    std::cout << "Default destructor\n";
 }
 
 Fixed& Fixed::operator=(const Fixed& other)
 {
-    std::cout << "Copy assignment operator called\n";
+    std::cout << "Copy assignment operator\n";
     _rawBits = other.getRawBits(); 
-    return (*this); // on retourne une réf, et this est un ptr
+    return (*this);
 }
 
 int Fixed::getRawBits(void) const
 {
-    std::cout << "getRawBits member function called\n";
+    std::cout << "getRawBits member function\n";
     return (_rawBits);
 }
 
